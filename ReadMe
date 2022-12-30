@@ -1,0 +1,39 @@
+OVERVIEW:
+My program is split into nine classes. Three of which, the ElliPart, CircPart, and RectPart, classes, I created
+to make the pane assignment color assignment achievable in a simpler manner. My Background class is responsible
+for all visual parts of my drawing besides the car as well as my labels, the timelines for the lights, and the
+timelines for the stopwatch. My Cartoon class contains a couple timelines responsible for the movement of the
+race car and my key handler to change the team of the race car. Lastly, my CartoonPaneOrganizer class houses all
+of the pane creation including my three different buttons. I used some association within a few of these classes
+like my Cartoon and Background class which helped me to delegate more of my program to respective classes/methods.
+
+I decided to make this game because of my interest in Formula One. Whenever a race starts, the program will always
+list the reaction time of the drivers (the time it takes them to lift their foot off the clutch). The beginning
+of a race is always the most important part and I wanted to simulate that in this program. Now, through this
+program, people may able to vaguely get a sense of how fast their reaction time would be if they were an F1 driver.
+I had a lot of trouble at certain points in this project and I had to do a lot of debugging on my own which was
+very tough, but overall I am extremely happy with how my program turned out and I learned a great deal!
+
+DESIGN CHOICES:
+One of the design choices I made was making separate classes for each shape type I used. By doing this, I could
+list the x, y, height, width, pane, and color of my shapes all in one argument. This proved extremely useful
+because of the sheer amount of shapes I had to create. Within these classes, I had methods called getRect, getCirc,
+and getElli. These returned the instances of the shapes I created and made sure they were put into my program.
+Additionally, I had trouble getting my lights to show up one column after the other in one timeline, so I
+instead created multiple timelines that had designated delay times. This may not have been the most efficient
+way to accomplish that, but it works! Finally, my stopwatch timeline took me a while to figure out. Because my
+stopwatch couldn't be started directly by calling the timeline method that counts up, I created a second timeline
+that calls the stopwatch timeline at the same time as the lights go out. Then, as soon as the go button is pressed,
+the stopwatch timeline stops and resets, along with the lights.
+
+KNOWN BUGS:
+Pressing the restart button before the lights have turned off creates a duplication error and causes them to bug
+out, flickering at odd times because the timelines become layered. Letting it play for a bit after, however,
+fixes the error. I attempted to get the restart button to only enable after the lights had gone out but I
+had trouble with association and decided to make it enable when the "GO!" button was pressed instead.
+
+DEBUGGING COLLABORATORS:
+None
+
+HOURS:
+~20
