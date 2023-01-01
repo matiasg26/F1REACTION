@@ -16,4 +16,7 @@ public class Constants {
     public static final int LIGHT_ROW_3_Y = 403;
     public static final int LIGHT_ROW_4_Y = 443;
     public static final int FULL_WIDTH = 1350;
+    public static final int FULL_HEIGHT = 850;
+    public static final int VAR1_WIDTH = 70;
+    public static final int VAR1_HEIGHT = 200;
 }

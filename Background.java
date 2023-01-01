@@ -16,6 +16,7 @@ import javafx.scene.text.Font;
 import javafx.util.Duration;
 
 import static javafx.scene.paint.Color.*;
+import static jdk.nashorn.internal.parser.TokenType.CASE;
 
 public class Background{
     private Rectangle rect;
@@ -114,6 +115,7 @@ public class Background{
     private double stopInt;
     private Pane labelPane;
     private Label label;
+    private KeyFrame frame;
     public Background(BorderPane midPane) {
         this.midPane = midPane;
         this.labelPane = new VBox();
@@ -279,44 +281,31 @@ public class Background{
                 this.circ25,this.circ26,this.circ27,this.circ28,this.circ29,this.circ30,this.circ31,this.circ32,
                 this.circ33,this.circ34,this.circ35,this.circ36,this.circ37,this.circ38,this.circ39);
     }
-    //brings into existence the first column of start lights
-    public void bringStartLight() {
-        KeyFrame kf = new KeyFrame(Duration.seconds(1), (ActionEvent e) -> this.updateStartLight1());
-        this.startLightTimeLine = new Timeline(kf);
-        this.startLightTimeLine.setCycleCount(1);
-        this.startLightTimeLine.play();
-    }
-    //brings into existence the second column of start lights
-    public void bringStartLight2() {
-        KeyFrame kf = new KeyFrame(Duration.seconds(2), (ActionEvent e) -> this.updateStartLight2());
-        this.startLightTimeLine = new Timeline(kf);
-        this.startLightTimeLine.setCycleCount(1);
-        this.startLightTimeLine.play();
-    }
-    //brings into existence the third column of start lights
-    public void bringStartLight3() {
-        KeyFrame kf = new KeyFrame(Duration.seconds(3), (ActionEvent e) -> this.updateStartLight3());
-        this.startLightTimeLine = new Timeline(kf);
-        this.startLightTimeLine.setCycleCount(1);
-        this.startLightTimeLine.play();
-    }
-    //brings into existence the fourth column of start lights
-    public void bringStartLight4() {
-        KeyFrame kf = new KeyFrame(Duration.seconds(4), (ActionEvent e) -> this.updateStartLight4());
-        this.startLightTimeLine = new Timeline(kf);
-        this.startLightTimeLine.setCycleCount(1);
-        this.startLightTimeLine.play();
-    }
-    //brings into existence the fifth column of start lights
-    public void bringStartLight5() {
-        KeyFrame kf = new KeyFrame(Duration.seconds(5), (ActionEvent e) -> this.updateStartLight5());
-        this.startLightTimeLine = new Timeline(kf);
+    //brings into existence all the columns of start lights
+    public void bringStartLight(int num) {
+        switch (num){
+            case 1:
+                frame = new KeyFrame(Duration.seconds(num), (ActionEvent e) -> this.midPane.getChildren().addAll(this.red,this.red2));
+                break;
+            case 2:
+                frame= new KeyFrame(Duration.seconds(num), (ActionEvent e) -> this.midPane.getChildren().addAll(this.red3,this.red4));
+                break;
+            case 3:
+                frame = new KeyFrame(Duration.seconds(num), (ActionEvent e) -> this.midPane.getChildren().addAll(this.red5,this.red6));
+                break;
+            case 4:
+                frame = new KeyFrame(Duration.seconds(num), (ActionEvent e) -> this.midPane.getChildren().addAll(this.red7,this.red8));
+                break;
+            case 5:
+                frame= new KeyFrame(Duration.seconds(num), (ActionEvent e) ->  this.midPane.getChildren().addAll(this.red9,this.red10));
+                break;
+        }
+        this.startLightTimeLine = new Timeline(frame);
         this.startLightTimeLine.setCycleCount(1);
         this.startLightTimeLine.play();
     }
     //makes the start lights disappear
     public void pushStartLight() {
-
         KeyFrame gf = new KeyFrame(Duration.seconds(randInt), (ActionEvent e) -> this.destroyStartLight());
         this.startLightTimeLine = new Timeline(gf);
         this.startLightTimeLine.setCycleCount(1);
@@ -362,17 +351,6 @@ public class Background{
     void restartStopWatch() {
         this.now = 0;
     }
-    //integral part of the bringStartLight() method, adds the shapes that make up the light to the midPane
-    //first column
-    public void updateStartLight1() {this.midPane.getChildren().addAll(this.red,this.red2);}
-    //second column
-    public void updateStartLight2() {this.midPane.getChildren().addAll(this.red3,this.red4);}
-    //third column
-    public void updateStartLight3() {this.midPane.getChildren().addAll(this.red5,this.red6);}
-    //fourth column
-    public void updateStartLight4() {this.midPane.getChildren().addAll(this.red7,this.red8);}
-    //fifth column
-    public void updateStartLight5() {this.midPane.getChildren().addAll(this.red9,this.red10);}
     //integral part of pushStartLight() method, makes them all disappear
     public void destroyStartLight() {
         this.midPane.getChildren().removeAll(this.red,this.red2,this.red3,this.red4,this.red5,this.red6,

@@ -21,7 +21,7 @@ public class App extends Application {
         stage.setTitle("Test your F1 reaction time!");
         stage.show();
         CartoonPaneOrganizer organizer = new CartoonPaneOrganizer();
-        Scene scene = new Scene(organizer.getRoot(), 1350, 850);
+        Scene scene = new Scene(organizer.getRoot(), Constants.FULL_WIDTH, Constants.FULL_HEIGHT);
         stage.setScene(scene);
     }
 
